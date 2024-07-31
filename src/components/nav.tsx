@@ -4,7 +4,7 @@ import { newSpirit } from '@/app/fonts'
 
 export default function Nav() {
   return (
-    <nav className="flex justify-between items-center text-md p-8 md:p-12 md:pb-8 max-w-screen-lg w-full mx-auto">
+    <nav className="flex justify-between items-center text-md py-4">
       <Link href="/">
         <Image src="/nameplate.png" alt="***REMOVED***" width={72} height={0} />
       </Link>

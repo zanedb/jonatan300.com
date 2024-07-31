@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { rebondGrotesque } from './fonts'
-import Nav from '@/components/nav'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -15,10 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={rebondGrotesque.className}>
-        <Nav />
-        {children}
-      </body>
+      <body className={rebondGrotesque.className}>{children}</body>
     </html>
   )
 }
