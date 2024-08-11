@@ -1,5 +1,5 @@
 import Nav from '@/components/nav'
-import Contact, { ContactForm } from '@/components/contact'
+import Contact from '@/components/contact'
 import Gallery from '@/components/gallery'
 import { newSpirit } from './fonts'
 

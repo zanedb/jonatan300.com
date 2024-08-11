@@ -24,7 +24,10 @@ const formSchema = z.object({
   message: z.string().min(10, 'not long enough').max(3000),
 })
 
-export function ContactForm() {
+export default function Contact() {
+  const [shown, setShown] = useState(false)
+  const [sent, setSent] = useState(false)
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,80 +39,97 @@ export function ContactForm() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+    fetch('/api/airtable', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    }).then((res) => {
+      if (res.status == 200) {
+        setSent(true)
+        setShown(false)
+      }
+    })
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>name</FormLabel>
-              <FormControl>
-                <Input placeholder="insect" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>email</FormLabel>
-              <FormControl>
-                <Input placeholder="you@gmail.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>phone</FormLabel>
-              <FormControl>
-                <Input placeholder="xxx-xxx-xxxx" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>message</FormLabel>
-              <FormControl>
-                <Textarea placeholder="…" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">send it</Button>
-      </form>
-    </Form>
-  )
-}
-
-export default function Contact() {
-  let [contactFormShown, setContactFormShown] = useState(false)
-
-  return (
     <>
-      {contactFormShown ? (
-        <ContactForm />
+      {shown ? (
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="insect" disabled={sent} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>email</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="you@gmail.com"
+                      disabled={sent}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>phone</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="xxx-xxx-xxxx"
+                      disabled={sent}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>message</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="…" disabled={sent} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" disabled={sent}>
+              send it
+            </Button>
+          </form>
+        </Form>
       ) : (
-        <Button variant="outline" onClick={() => setContactFormShown(true)}>
-          contact me
+        <Button
+          variant="outline"
+          onClick={() => setShown(true)}
+          disabled={sent}
+        >
+          {sent ? 'sent' : 'contact me'}
         </Button>
       )}
     </>
