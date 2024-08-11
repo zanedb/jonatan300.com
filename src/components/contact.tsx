@@ -1,19 +1,10 @@
 'use client'
 
-import { newSpirit } from '@/app/fonts'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import validator from 'validator'
 import { Button } from '@/components/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
 import {
   Form,
   FormControl,
@@ -24,12 +15,13 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { useState } from 'react'
 
 const formSchema = z.object({
-  name: z.string().min(2).max(50),
-  phone: z.string().refine(validator.isMobilePhone),
-  email: z.string().email().min(5),
-  message: z.string().min(10).max(3000),
+  name: z.string().min(2, 'can’t be empty').max(50),
+  phone: z.string().refine(validator.isMobilePhone, 'invalid phone'),
+  email: z.string().email('invalid email').min(5),
+  message: z.string().min(10, 'not long enough').max(3000),
 })
 
 export function ContactForm() {
@@ -109,21 +101,17 @@ export function ContactForm() {
 }
 
 export default function Contact() {
+  let [contactFormShown, setContactFormShown] = useState(false)
+
   return (
-    <Dialog>
-      <DialogTrigger>
-        <span className={`font-medium ${newSpirit.className}`}>contact</span>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle className={`text-xl font-medium ${newSpirit.className}`}>
-            contact me
-          </DialogTitle>
-          <DialogDescription>
-            <ContactForm />
-          </DialogDescription>
-        </DialogHeader>
-      </DialogContent>
-    </Dialog>
+    <>
+      {contactFormShown ? (
+        <ContactForm />
+      ) : (
+        <Button variant="outline" onClick={() => setContactFormShown(true)}>
+          contact me
+        </Button>
+      )}
+    </>
   )
 }
