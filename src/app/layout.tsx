@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: '***REMOVED*** web site',
-  description: "i'm an artist and student based in san francisco, ca.",
+  description: 'i’m an artist and student based in san francisco, ca.',
 }
 
 export default function RootLayout({

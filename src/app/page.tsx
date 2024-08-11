@@ -1,4 +1,5 @@
 import Nav from '@/components/nav'
+import Contact from '@/components/contact'
 import Gallery from '@/components/gallery'
 import { newSpirit } from './fonts'
 
@@ -9,17 +10,18 @@ export default function Home() {
         <div className="space-y-4 p-4">
           <Nav />
           <h1 className={`text-2xl ${newSpirit.className} font-medium`}>
-            hi, i'm ***REMOVED***.
+            hi, i’m ***REMOVED***.
           </h1>
           <p>
-            i'm an artist based in sf, currently studying studio art at san
+            i’m an artist based in sf, currently studying studio art at san
             ***REMOVED***.
           </p>
           <p>
-            i'm available for commission. preferably spray painted murals,
+            i’m available for commission. preferably spray painted murals,
             digital art (including artist/album covers), and digital
             illustration. contact me below if interested.
           </p>
+          <Contact />
         </div>
       </div>
       <Gallery />
