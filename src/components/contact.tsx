@@ -65,7 +65,12 @@ export default function Contact() {
                 <FormItem>
                   <FormLabel>name</FormLabel>
                   <FormControl>
-                    <Input placeholder="insect" disabled={sent} {...field} />
+                    <Input
+                      autoFocus
+                      placeholder="insect"
+                      disabled={sent}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

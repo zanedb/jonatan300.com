@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import images from '@/app/art.json'
+import images from '@/lib/art.json'
 
 export default function Gallery() {
   return (

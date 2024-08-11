@@ -1,7 +1,7 @@
 import Nav from '@/components/nav'
 import Contact from '@/components/contact'
 import Gallery from '@/components/gallery'
-import { newSpirit } from './fonts'
+import { newSpirit } from '@/lib/fonts'
 
 export default function Home() {
   return (
