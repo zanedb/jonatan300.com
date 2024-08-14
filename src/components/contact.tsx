@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import validator from 'validator'
+import { Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -25,8 +26,9 @@ const formSchema = z.object({
 })
 
 export default function Contact() {
-  const [shown, setShown] = useState(false)
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'shown' | 'sending' | 'sent'>(
+    'idle'
+  )
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,6 +41,7 @@ export default function Contact() {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    setStatus('sending')
     fetch('/api/airtable', {
       method: 'POST',
       headers: {
@@ -47,15 +50,14 @@ export default function Contact() {
       body: JSON.stringify(values),
     }).then((res) => {
       if (res.status == 200) {
-        setSent(true)
-        setShown(false)
+        setStatus('sent')
       }
     })
   }
 
   return (
     <>
-      {shown ? (
+      {status === 'shown' || status === 'sending' ? (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -68,7 +70,7 @@ export default function Contact() {
                     <Input
                       autoFocus
                       placeholder="insect"
-                      disabled={sent}
+                      disabled={status === 'sending'}
                       {...field}
                     />
                   </FormControl>
@@ -85,7 +87,7 @@ export default function Contact() {
                   <FormControl>
                     <Input
                       placeholder="you@gmail.com"
-                      disabled={sent}
+                      disabled={status === 'sending'}
                       {...field}
                     />
                   </FormControl>
@@ -102,7 +104,7 @@ export default function Contact() {
                   <FormControl>
                     <Input
                       placeholder="xxx-xxx-xxxx"
-                      disabled={sent}
+                      disabled={status === 'sending'}
                       {...field}
                     />
                   </FormControl>
@@ -117,24 +119,31 @@ export default function Contact() {
                 <FormItem>
                   <FormLabel>message</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="…" disabled={sent} {...field} />
+                    <Textarea
+                      placeholder="…"
+                      disabled={status === 'sending'}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={sent}>
-              send it
+            <Button type="submit" disabled={status === 'sending'}>
+              {status === 'sending' && (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              )}
+              {status === 'sending' ? 'sending' : 'send it'}
             </Button>
           </form>
         </Form>
       ) : (
         <Button
           variant="outline"
-          onClick={() => setShown(true)}
-          disabled={sent}
+          onClick={() => setStatus('shown')}
+          disabled={status === 'sent'}
         >
-          {sent ? 'sent' : 'contact me'}
+          {status === 'sent' ? 'sent' : 'contact me'}
         </Button>
       )}
     </>
