@@ -5,6 +5,10 @@ import './globals.css'
 export const metadata: Metadata = {
   title: '***REMOVED*** web site',
   description: 'i’m an artist and student based in san francisco, ca.',
+  openGraph: {
+    images: '/og-image.png',
+  },
+  metadataBase: new URL('https://***REMOVED***300.com'),
 }
 
 export default function RootLayout({
