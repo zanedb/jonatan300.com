@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
   if (isEmpty(Message) || !isLength(Message, { min: 10, max: undefined }))
     return NextResponse.json({ error: 'invalid message' }, { status: 400 })
 
-  base('contact').create([
+  await base('contact').create([
     {
       fields: {
         Name,
