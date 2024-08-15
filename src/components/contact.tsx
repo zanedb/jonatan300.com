@@ -71,6 +71,7 @@ export default function Contact() {
                       autoFocus
                       placeholder="insect"
                       disabled={status === 'sending'}
+                      className="text-base"
                       {...field}
                     />
                   </FormControl>
@@ -88,6 +89,7 @@ export default function Contact() {
                     <Input
                       placeholder="you@gmail.com"
                       disabled={status === 'sending'}
+                      className="text-base"
                       {...field}
                     />
                   </FormControl>
@@ -105,6 +107,7 @@ export default function Contact() {
                     <Input
                       placeholder="xxx-xxx-xxxx"
                       disabled={status === 'sending'}
+                      className="text-base"
                       {...field}
                     />
                   </FormControl>
@@ -122,6 +125,7 @@ export default function Contact() {
                     <Textarea
                       placeholder="…"
                       disabled={status === 'sending'}
+                      className="text-base"
                       {...field}
                     />
                   </FormControl>
@@ -143,7 +147,7 @@ export default function Contact() {
           onClick={() => setStatus('shown')}
           disabled={status === 'sent'}
         >
-          {status === 'sent' ? 'sent' : 'contact me'}
+          {status === 'sent' ? 'sent' : 'commission me'}
         </Button>
       )}
     </>
