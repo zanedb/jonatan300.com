@@ -146,6 +146,7 @@ export default function Contact() {
           variant="outline"
           onClick={() => setStatus('shown')}
           disabled={status === 'sent'}
+          className="opacity-100"
         >
           {status === 'sent' ? 'sent' : 'commission me'}
         </Button>
