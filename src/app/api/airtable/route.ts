@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { isEmpty, isEmail, isMobilePhone, isLength } from 'validator'
-import Airtable from 'airtable'
-var base = new Airtable({ apiKey: process.env.AIRTABLE_KEY }).base(
-  process.env.AIRTABLE_BASE as string
-)
 
 export async function POST(request: NextRequest) {
   const body = await request.json()
@@ -24,16 +20,34 @@ export async function POST(request: NextRequest) {
   if (isEmpty(Message) || !isLength(Message, { min: 10, max: undefined }))
     return NextResponse.json({ error: 'invalid message' }, { status: 400 })
 
-  await base('contact').create([
+  const send = await fetch(
+    `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE}/contact`,
     {
-      fields: {
-        Name,
-        Email,
-        Phone,
-        Message,
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.AIRTABLE_KEY}`,
+        'Content-Type': 'application/json',
       },
-    },
-  ])
+      body: JSON.stringify({
+        records: [
+          {
+            fields: {
+              Name,
+              Email,
+              Phone,
+              Message,
+            },
+          },
+        ],
+      }),
+    }
+  )
 
-  return NextResponse.json({ success: 'submitted' }, { status: 200 })
+  if (send.status === 200) {
+    return NextResponse.json({ success: 'submitted' }, { status: 200 })
+  } else {
+    const error = await send.json()
+    console.log(error)
+    return NextResponse.json({ error: 'failed' }, { status: 500 })
+  }
 }
