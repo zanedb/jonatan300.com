@@ -24,7 +24,7 @@ export default function Gallery() {
   const [openIndex, setOpenIndex] = useState<undefined | number>(undefined)
 
   return (
-    <section className="py-4 px-4 md:px-0 md:pt-6">
+    <section className="py-4 px-4 md:px-0 md:py-6">
       {openIndex !== undefined && (
         <Lightbox
           open
@@ -36,7 +36,7 @@ export default function Gallery() {
           }}
         />
       )}
-      <div className="md:columns-2 lg:columns-3 lg:gap-6 xl:gap-8">
+      <div className="md:columns-2 xl:columns-3 3xl:columns-4 lg:gap-6 xl:gap-8">
         {images.map(({ filename, alt }, index) => (
           <GalleryImage
             filename={filename}
@@ -64,7 +64,7 @@ const GalleryImage = ({
 }) => (
   <Image
     src={require(`@/public/art/${filename}`).default}
-    className="rounded-lg h-auto w-full cursor-pointer hover:shadow-md transition-shadow transition-transform hover:-translate-y-0.5 duration-300 ease-in-out mb-4 md:mb-6"
+    className="rounded-lg h-auto w-full cursor-pointer hover:shadow-md transition-shadow transition-transform hover:-translate-y-0.5 duration-300 ease-in-out mb-4 md:mb-6 3xl:mb-8"
     placeholder="blur"
     alt={alt}
     priority={index < 3}
