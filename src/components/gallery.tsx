@@ -76,7 +76,7 @@ const GalleryImage = ({
 }) => (
   <Image
     src={require(`@/public/art/${filename}`).default}
-    className="rounded-lg object-cover h-auto w-full cursor-pointer hover:shadow-xl transition-shadow duration-300 ease-in-out"
+    className="rounded-lg h-auto w-full cursor-pointer hover:shadow-md transition-shadow transition-transform hover:-translate-y-0.5 duration-300 ease-in-out mb-4 md:mb-6"
     placeholder="blur"
     alt={alt}
     priority={index < 3}
