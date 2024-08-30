@@ -15,12 +15,30 @@
     "filename": "fill-1.png",
     "width": 414,
     "height": 349,
+    "alt": "Digitally created fill"
+  },
+  {
+    "filename": "IMG_8109.jpeg",
+    "width": 3024,
+    "height": 4032,
+    "alt": "Hand-drawn"
+  },
+  {
+    "filename": "IMG_9261.jpg",
+    "width": 3024,
+    "height": 4032,
     "alt": ""
   },
   {
-    "filename": "IMG_0501.jpg",
-    "width": 4032,
-    "height": 3024,
+    "filename": "IMG_7812.jpg",
+    "width": 848,
+    "height": 1128,
+    "alt": ""
+  },
+  {
+    "filename": "sufx.jpg",
+    "width": 397,
+    "height": 406,
     "alt": ""
   },
   {
@@ -36,33 +54,15 @@
     "alt": ""
   },
   {
-    "filename": "IMG_7812.jpg",
-    "width": 848,
-    "height": 1128,
-    "alt": ""
-  },
-  {
-    "filename": "IMG_9261.jpg",
-    "width": 3024,
-    "height": 4032,
-    "alt": ""
-  },
-  {
-    "filename": "sufx.jpg",
-    "width": 397,
-    "height": 406,
-    "alt": ""
-  },
-  {
-    "filename": "oshi.jpg",
-    "width": 327,
-    "height": 355,
-    "alt": ""
-  },
-  {
     "filename": "IMG_8255.jpg",
     "width": 828,
     "height": 448,
+    "alt": ""
+  },
+  {
+    "filename": "IMG_0501.jpg",
+    "width": 4032,
+    "height": 3024,
     "alt": ""
   }
 ]
