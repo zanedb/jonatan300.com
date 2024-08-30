@@ -13,11 +13,15 @@ const config = {
     container: {
       center: true,
       padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-        '3xl': '1536px',
-        '4xl': '1920px',
-      },
+    },
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px',
+      '3xl': '1920px',
+      '4xl': '1920px',
     },
     extend: {
       colors: {
