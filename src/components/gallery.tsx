@@ -23,16 +23,8 @@ const slides = images.map(({ filename, width, height, alt }) => ({
 export default function Gallery() {
   const [openIndex, setOpenIndex] = useState<undefined | number>(undefined)
 
-  const chunk = (arr: any[], size: number) =>
-    Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
-      arr.slice(i * size, i * size + size)
-    )
-
-  const SIZE = 3
-  const columns = chunk(images, SIZE)
-
   return (
-    <section>
+    <section className="py-4 px-4 md:px-0 md:pt-6">
       {openIndex !== undefined && (
         <Lightbox
           open
@@ -44,19 +36,15 @@ export default function Gallery() {
           }}
         />
       )}
-      <div className="grid p-4 py-4 sm:pl-0 md:px-4 gap-4 items-start grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4">
-        {columns.map((column, i) => (
-          <div className="grid gap-4" key={i}>
-            {column.map(({ filename, alt }, index) => (
-              <GalleryImage
-                filename={filename}
-                alt={alt}
-                index={index + i * SIZE}
-                key={index}
-                setOpenIndex={setOpenIndex}
-              />
-            ))}
-          </div>
+      <div className="md:columns-2 lg:columns-3 lg:gap-6 xl:gap-8">
+        {images.map(({ filename, alt }, index) => (
+          <GalleryImage
+            filename={filename}
+            alt={alt}
+            index={index}
+            key={index}
+            setOpenIndex={setOpenIndex}
+          />
         ))}
       </div>
     </section>
