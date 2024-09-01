@@ -8,7 +8,7 @@ export default function Nav() {
         <ThemeImage
           srcLight="/nameplate.png"
           srcDark="/nameplate-dark.png"
-          alt="nametag with swag"
+          alt={'“***REMOVED***” nametag with some swag'}
           width={72}
           height={0}
         />
