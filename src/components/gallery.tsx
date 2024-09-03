@@ -36,7 +36,7 @@ export default function Gallery() {
           }}
         />
       )}
-      <div className="md:columns-2 xl:columns-3 3xl:columns-4 lg:gap-6 xl:gap-8 pt-6">
+      <div className="md:columns-2 xl:columns-3 3xl:columns-4 lg:gap-6 xl:gap-8 py-6">
         {images.map(({ filename, alt }, index) => (
           <GalleryImage
             filename={filename}
