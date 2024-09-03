@@ -6,7 +6,7 @@ import { newSpirit } from '@/lib/fonts'
 export default function Home() {
   return (
     <main className="flex flex-col sm:flex-row md:pr-4">
-      <div className="flex-none sm:w-[20em] md:w-[23em] md:pl-4 top-0 sm:h-screen sm:sticky overflow-x-hidden sm:overflow-y-auto no-scrollbar">
+      <div className="flex-none sm:w-[20em] md:w-[23em] md:pl-4 pt-6 top-0 sm:h-screen sm:sticky overflow-x-hidden sm:overflow-y-auto no-scrollbar">
         <div className="space-y-4 p-4">
           <Nav />
           <h1 className={`text-2xl ${newSpirit.className} font-medium`}>

@@ -18,7 +18,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={rebondGrotesque.className}>{children}</body>
+      <body className={rebondGrotesque.className}>
+        <div
+          style={{
+            backgroundSize: 'auto 100%',
+            height: 24,
+            width: '100%',
+            position: 'fixed',
+            backdropFilter: 'blur(8px)',
+          }}
+          className="body-border"
+        ></div>
+        <div
+          style={{
+            backgroundSize: 'auto 100%',
+            height: 24,
+            width: '100%',
+            position: 'fixed',
+            bottom: 0,
+            backdropFilter: 'blur(8px)',
+          }}
+          className="body-border"
+        ></div>
+        {children}
+      </body>
     </html>
   )
 }

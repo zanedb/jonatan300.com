@@ -5,8 +5,7 @@ website for my friend ***REMOVED***.
 ## todo
 
 - [ ] update art alt text
-- [ ] add social media (?)
-- [ ] website border (?)
+- [x] website border
 - [x] lightbox
 - [x] add contact form
 - [x] add favicon
