@@ -10,7 +10,7 @@ export default function Nav() {
           srcDark="/nameplate-dark.png"
           alt={'“***REMOVED***” nametag with some swag'}
           width={72}
-          height={0}
+          height={54}
         />
       </Link>
     </nav>
