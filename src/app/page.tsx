@@ -10,12 +10,9 @@ export default function Home() {
         <div className="space-y-4 p-4">
           <Nav />
           <h1 className={`text-2xl ${newSpirit.className} font-medium`}>
-            hi, i’m ***REMOVED***.
+            hi, i’m jonatan.
           </h1>
-          <p>
-            i’m an artist based in sf, currently studying studio art at san
-            ***REMOVED***.
-          </p>
+          <p>i’m an artist based in sf, currently studying studio art.</p>
           <p>
             i’m available for commission. preferably spray painted murals,
             digital art (including artist/album covers), and digital

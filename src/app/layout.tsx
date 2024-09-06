@@ -3,12 +3,12 @@ import { rebondGrotesque } from '@/lib/fonts'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: '***REMOVED***’ web site',
+  title: 'jonatan’s art',
   description: 'i’m an artist and student based in san francisco, ca.',
   openGraph: {
     images: '/og-image.png',
   },
-  metadataBase: new URL('https://***REMOVED***300.com'),
+  metadataBase: new URL('https://jonatan300.com'),
 }
 
 export default function RootLayout({
