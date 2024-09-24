@@ -29,7 +29,7 @@ export default function RootLayout({
           }}
           className="body-border"
         ></div>
-        <div
+        {/*<div
           style={{
             backgroundSize: 'auto 100%',
             height: 24,
@@ -39,7 +39,7 @@ export default function RootLayout({
             backdropFilter: 'blur(8px)',
           }}
           className="body-border"
-        ></div>
+        ></div>*/}
         {children}
       </body>
     </html>
