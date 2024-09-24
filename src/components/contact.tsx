@@ -69,7 +69,7 @@ export default function Contact() {
                   <FormControl>
                     <Input
                       autoFocus
-                      placeholder="insect"
+                      placeholder="goer"
                       disabled={status === 'sending'}
                       className="text-base"
                       {...field}
@@ -87,7 +87,7 @@ export default function Contact() {
                   <FormLabel>email</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="you@gmail.com"
+                      placeholder="goer@gmail.com"
                       disabled={status === 'sending'}
                       className="text-base"
                       {...field}
